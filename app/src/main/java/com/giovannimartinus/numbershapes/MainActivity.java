@@ -10,14 +10,15 @@ import static java.lang.Math.sqrt;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    /* create a method to Toast */
+    public void makeToast(String string) {
+        Toast.makeText(MainActivity.this, string, Toast.LENGTH_SHORT).show();
+    }
+
+
     /* create a class */
     class Numbers {
-        
-        /* create a method to Toast */
-        public void makeToast(String string) {
-            Toast.makeText(MainActivity.this, string, Toast.LENGTH_SHORT).show();
-        }
-
 
         /* create a method with which takes a parameter of integer type */
         public void whichShape(int x) {
@@ -50,8 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
         /* assign the class Numbers to an instant */
         Numbers shapeNumber = new Numbers();
-        /* call on the the Numbers' method whichShape as instant shapeNumber */
-        shapeNumber.whichShape(Integer.parseInt(usersNumber.getText().toString()));
+
+        /* check to see if the text field is null */
+        if (usersNumber.getText().toString() == null || usersNumber.getText().toString().trim().isEmpty()) {
+            makeToast("You must enter a number.");
+        } else {
+           /* call on the the Numbers' method whichShape as instant shapeNumber */
+            shapeNumber.whichShape(Integer.parseInt(usersNumber.getText().toString()));
+        }
 
     }
 
